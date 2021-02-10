@@ -17,8 +17,8 @@ export default function GuessedWords(props) {
     contents = (
       <div data-test="guessedWords">
         <h3>Guessed Words</h3>
-        <table>
-          <thead>
+        <table className="table table-sm">
+          <thead className="table-light">
             <tr>
               <th>Guess</th>
               <th>Matching Letters</th>

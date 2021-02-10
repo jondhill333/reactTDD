@@ -5,7 +5,7 @@ export default function Congrats(props) {
   return (
     <>
       {props.success && (
-        <div data-test="congratsComponent">
+        <div data-test="congratsComponent" className="alert alert-success">
           <span data-test="congratsMessage">
             Congratulations you guessed the word!
           </span>
