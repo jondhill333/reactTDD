@@ -6,16 +6,30 @@ import { Input } from "./input";
 
 const setup = (intialState = {}) => {
   const store = storeFactory(intialState);
-  const wrapper = mount(<Input store={store} />);
+  const wrapper = shallow(<Input store={store} />);
   return wrapper;
 };
 
 describe("render", () => {
   describe("word has not been guessed", () => {
-    test("renders component without error", () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
+    test("renders component without error", () => {
+      const component = findByTestAttribute(wrapper, "input");
+      expect(component.length).toBe(1);
+    });
 
-    test("renders input box", () => {});
-    test("renders submit button", () => {});
+    test("renders input box", () => {
+      const inputBox = findByTestAttribute(wrapper, "inputBox");
+      expect(inputBox.length).toBe(1);
+    });
+    test("renders submit button", () => {
+      const submitButton = findByTestAttribute(wrapper, "submitButton");
+      expect(submitButton.length).toBe(1);
+    });
   });
 
   describe("word has been guessed", () => {
