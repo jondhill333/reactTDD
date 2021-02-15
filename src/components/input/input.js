@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { ReactReduxContext } from "react-redux";
 
 import { connect } from "react-redux";
+import Congrats from "../congrats/Congrats";
 
-export class Input extends Component {
+class Input extends Component {
   render() {
     const contents = this.props.success ? null : (
       <form className="form-inline">
