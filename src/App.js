@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import GuessedWords from "./GuessedWords";
-import Congrats from "./Congrats";
+import GuessedWords from "./components/guessedWords/GuessedWords";
+import Congrats from "./components/congrats/Congrats";
 
 class App extends Component {
   render() {
