@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { ReactReduxContext } from "react-redux";
 
+import { guessWord } from "../../actions";
+
 import { connect } from "react-redux";
 import Congrats from "../congrats/Congrats";
 
@@ -31,4 +33,4 @@ const mapStateToProps = ({ success }) => {
   return { success };
 };
 
-export default connect(mapStateToProps)(Input);
+export default connect(mapStateToProps, { guessWord })(Input);
