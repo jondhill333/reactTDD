@@ -2,7 +2,7 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 
 import { findByTestAttribute, storeFactory } from "../../../test/testUtils";
-import Input from "./input";
+import Input, { UnconnectedInput } from "./input";
 
 const setup = (intialState = {}) => {
   const store = storeFactory(intialState);
@@ -47,7 +47,6 @@ describe("render", () => {
     });
 
     test("does not render input box", () => {
-      console.log(wrapper.debug());
       const inputBox = findByTestAttribute(wrapper, "inputBox");
       expect(inputBox.length).toBe(0);
     });
@@ -70,5 +69,24 @@ describe("redux props", () => {
     const wrapper = setup();
     const guessWordProp = wrapper.instance().props.guessWord;
     expect(guessWordProp).toBeInstanceOf(Function);
+  });
+});
+
+describe("`guessWord` action creator call", () => {
+  test("calls `guessWord` on submit button click", () => {
+    const guessWordMock = jest.fn();
+    const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />);
+    const submitButton = findByTestAttribute(wrapper, "submitButton");
+    submitButton.simulate("click");
+    const guessWordWordCallCount = guessWordMock.mock.calls.length;
+    expect(guessWordWordCallCount).toBe(1);
+  });
+
+  test("guessWord gets passed the textt from  the input", () => {
+    const guessWordMock = jest.fn();
+    const wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />);
+    const submitButton = findByTestAttribute(wrapper, "submitButton");
+    submitButton.simulate("click");
+    const inputBox = findByTestAttribute(wrapper, "inputBox");
   });
 });
