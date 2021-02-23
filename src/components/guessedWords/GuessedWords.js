@@ -10,6 +10,7 @@ export default function GuessedWords(props) {
   } else {
     const guessedWordsRows = props.guessedWords.map((word, index) => (
       <tr data-test="guessedWord" key={index}>
+        <td>{index + 1}</td>
         <td>{word.guessedWord}</td>
         <td>{word.letterMatchCount}</td>
       </tr>
@@ -20,6 +21,7 @@ export default function GuessedWords(props) {
         <table className="table table-sm">
           <thead className="table-light">
             <tr>
+              <th>#</th>
               <th>Guess</th>
               <th>Matching Letters</th>
             </tr>
