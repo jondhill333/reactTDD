@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { findByTestAttribute } from "../../../test/testUtils";
-import NewWord from "./newWord";
+import NewWord from "./NewWord";
 
 const defaultProps = { display: false };
 
